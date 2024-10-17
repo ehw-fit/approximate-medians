@@ -31,10 +31,8 @@ This tool is able to determine the histogram of errors for arbitrary approximate
 ### Basic usage
 Firstly, it is imporant to build the BuDDy library (for BDDs) and 
 ```sh
-mkdir build
-cd build
-cmake ..
-make
+cmake -B ./build
+cmake --build ./build --config Release -j 8 
 ```
 
 Then you can test the circuit
