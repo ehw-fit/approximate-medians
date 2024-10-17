@@ -18,4 +18,4 @@ link_directories("lib")
 set(SOURCE_FILES src/fitnessbdd.cxx src/chromosomear.cxx src/main.cxx src/reference.cxx)
 add_executable(median-validate ${SOURCE_FILES})
 
-target_link_libraries( median-validate bdd )
+target_link_libraries(median-validate buddy)
