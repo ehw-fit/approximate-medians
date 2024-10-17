@@ -686,7 +686,12 @@ int ChromosomeAr::GetSizeConst() const
         return -1;
     else {
         
-        return 920 * p_ops + 86 * p_regs;
+        /* 
+        med_cmp area: 345.874093 - 2regs = 127.64
+        reg area: 63.824799
+
+        */
+        return int(128  * p_ops + 64 * p_regs); 
     }
 }
 
