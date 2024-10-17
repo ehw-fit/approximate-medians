@@ -7,16 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O3")
 
 set(CMAKE_INSTALL_PREFIX ${PROJECT_SOURCE_DIR})
 
-
-include(ExternalProject)
-
-ExternalProject_Add(libbdd
-    SOURCE_DIR ${PROJECT_SOURCE_DIR}/buddy-2.4
-    CONFIGURE_COMMAND ${PROJECT_SOURCE_DIR}/buddy-2.4/configure --includedir=${PROJECT_SOURCE_DIR}/lib --libdir=${PROJECT_SOURCE_DIR}/lib
-    BUILD_COMMAND ${MAKE}
-    INSTALL_COMMAND make install
-)
-
+add_subdirectory("buddy")
 
 include_directories("lib")
 link_directories("lib")

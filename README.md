@@ -26,15 +26,13 @@ This tool is able to determine the histogram of errors for arbitrary approximate
 ### Basic usage
 Firstly, it is imporant to build the BuDDy library (for BDDs) and 
 ```sh
-mkdir build
-cd build
-cmake ..
-make
+cmake -B ./build
+cmake --build ./build --config Release -j 8 
 ```
 
 Then you can test the circuit
 ```
-./median-validate ../netlist/s_9_3.cha
+./build/median-validate netlist/s_9_3.cha
 ```
 
-For details about formal verification, please reffer `PrintFitness` function in [futbessbdd.cxx](src/fitnessbdd.cxx) folder.
+For details about formal verification, please reffer `PrintFitness` function in [fitnessbdd.cxx](src/fitnessbdd.cxx) folder.

@@ -59,29 +59,56 @@ T_FIT FitnessBdd<CH>::GetFitness(CH & chrom)
 }
 
 
+
+long long factorial(int num) {
+    long long fact = 1;
+    for (int i = 1; i <= num; i++) {
+        fact *= i;
+    }
+    return fact;
+}
+
+// Function to calculate combination (nCr)
+long long cn(int n, int r) {
+    long long x = factorial(n) / (factorial(n - r) * factorial(r));
+    return x;
+}
+
 template <class CH>
 void  FitnessBdd<CH>::PrintFitness(CH & chrom, ostream & out)
 {
+    int med = (chrom.inputs-1)/2;
+    double histn[med+2];
+    double histp[med+2];
+
     bdd median_test = chrom.GenerateBdd();
     //out << "==============================" << endl;
     //out << "Size: " << chrom.GetSize() << endl;
     //fit = bdd_satcount(median_test ^ ref->GetValidMedian());
 
-    for (int i = 1; i <= chrom.inputs / 2; i++) {
-        out << "SAT count: " << (chrom.inputs/2 - i + 1) << " - " << bdd_satcount(median_test & ref->GetOnesCount(i)) << endl;
-        //int id = (chrom.inputs/2 - i + 1);
-        //fit -= id * id *  bdd_satcount(median_test & ref->GetOnesCount(i));
+    histp[med+1] = histn[med+1] = 0;
+    for (int k = 0; k <= med; k++) {
+        histn[k] = bdd_satcount(!median_test & ref->GetOnesCount(med+k));
+        histp[k] = bdd_satcount(median_test & ref->GetOnesCount(med-k+1));
     }
-    //out << endl;
 
-    out << "SAT count (0): " << bdd_satcount(!(median_test ^ ref->GetValidMedian())) << endl;
-    for (int i = chrom.inputs / 2 + 1; i < chrom.inputs; i++) {
-        out << "SAT count: " << i << "-" << (i - chrom.inputs/2) << " - " << bdd_satcount((!median_test) & ref->GetOnesCount(i)) << endl;
-      //  int id = (i - chrom.inputs/2);
-       // fit -= id * id * bdd_satcount((!median_test) & ref->GetOnesCount(i));
 
+    for (int k = med; k > 0; k--) {
+        double h = 100*(histn[k]/cn(chrom.inputs, med+1-k) - histn[k+1]/cn(chrom.inputs, med+1-k-1));
+        out << " -" << k << ":" << histn[k] << "=> " << h << "%" << endl;
     }
+    {
+        int k = 0;
+        double h = 100*(histn[k]/cn(chrom.inputs, med+1-k) - histn[k+1]/cn(chrom.inputs, med+1-k-1));
+        out << "  " << k << ":" << histn[k] << "=> " << h << "%" << endl;
+    }
+    for (int k = 1; k <= med; k++) {
+        double h = 100*(histp[k]/cn(chrom.inputs, med+k) - histp[k+1]/cn(chrom.inputs, med+k+1));
+        out << " +" << k << ":" << histp[k] << "=> " << h << "%" << endl;
+    }
+
 }
+
 
 template <class CH>
 void FitnessBdd<CH>::GetMinMaxDiff(CH & chrom, int & minimum, int & maximum)
