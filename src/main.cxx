@@ -1,3 +1,12 @@
+/**
+ * File: main.cxx
+ * Author: mrazek
+ * 
+ * Main file for the median problem. It calculates the fitness
+ * of the chromosome and prints the statistics.
+ * 
+ * This file does not contain the evolutionary algorithm.
+ */
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
@@ -72,7 +81,7 @@ int main(int argc, char ** argv)
 
     /* Calculate fitness */
     T_FIT fit = fb.GetFitness(chrom);
-    cout << "Q(M) = " << fit << endl;
+    cout << "Q(M) = " << (-fit)/1000. << endl;
 
 
     cout << "Error distribution = {" << endl;

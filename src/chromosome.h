@@ -1,3 +1,10 @@
+/**
+ * File: chromosome.h
+ * Author: mrazek
+ * 
+ * Definition of the chromosome functions 1=(min, max), 2=(max, min)
+ */
+
 #pragma once
 #include <iostream>
 #include <ostream>

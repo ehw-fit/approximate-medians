@@ -1,4 +1,11 @@
+/**
+ * File: vhdlconst.h
+ * Author: mrazek
+ * 
+ * Constants for VHDL export
+ */
 
+#pragma once
 
 const char vhdl_preamble[] = "library IEEE;\n"
 "use IEEE.std_logic_1164.all;\n"

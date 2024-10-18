@@ -1,8 +1,13 @@
 /* 
- * File:   FitnessBdd.h
+ * File:   FitnessBdd.cpp
  * Author: imrazek
- *
- * Created on 27. dubna 2015, 11:05
+ * 
+ * Fitness evaluation of the chromosome using BDD
+ * BDD is used to calculate the error distribution
+ * which is transformed to the fitness value by the
+ * formula  sum(j**2 * (H(j)))
+ * 
+ * The library uses BuDDy BDD library
  */
 
 #ifndef FITNESSBDD_H
@@ -30,6 +35,7 @@ public:
     void GetMinMaxDiff(CH & chrom, int & minimum, int & maximum);
 private:
     Reference * ref;
+    long long * cn_cache; // cache for combination coefficients for a given number of inputs
 };
 
 #endif	/* FITNESSBDD_H */

@@ -1,3 +1,17 @@
+/**
+ * File: chromosomear.cpp
+ * Author: mrazek
+ * 
+ * Chromosome for median problem. Represents the median network
+ * as a composition of CAS (compare and swap) units.
+ * 
+ * Inherently it transforms the representation to the pipelined
+ * version of the median network and calculates the number of
+ * operations and registers and stages (delay).
+ * 
+ * It is possible to export the area to VHDL or C code.
+ */
+
 #include <cstdlib>
 #include <cstdlib>
 #include <assert.h>

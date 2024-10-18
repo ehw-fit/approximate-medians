@@ -1,3 +1,17 @@
+/**
+ * File: chromosomear.h
+ * Author: mrazek
+ * 
+ * Chromosome for median problem. Represents the median network
+ * as a composition of CAS (compare and swap) units.
+ * 
+ * Inherently it transforms the representation to the pipelined
+ * version of the median network and calculates the number of
+ * operations and registers and stages (delay).
+ * 
+ * It is possible to export the area to VHDL or C code.
+ */
+
 #pragma once
 #include <iostream>
 #include <ostream>
@@ -5,11 +19,7 @@
 
 using namespace std;
 
-/* Codes are inspired by CGP 1=AND, 2=OR*/
-/*const int MIN_CODE = 1;
-const int MAX_CODE = 2;
-*/
-
+/* temporary structure for ASAP planning*/
 struct TPos 
 {
     int min;
@@ -76,7 +86,7 @@ public:
 
     int SimulateMedian(int * buff);
     /**
-     * Gets count of active nodes
+     * Gets estimated size
      * @return 
      */
     int GetSize();
