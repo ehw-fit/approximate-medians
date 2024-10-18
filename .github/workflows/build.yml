@@ -33,6 +33,6 @@ jobs:
       # See https://cmake.org/cmake/help/latest/manual/ctest.1.html for more detail
       run: |
           ls
-          ./build/median-validate netlists/s_9_1.cha
-          ./build/median-validate netlists/s_9_8.cha
+          ./build/median-validate netlist/s_9_1.cha
+          ./build/median-validate netlist/s_9_8.cha
 
