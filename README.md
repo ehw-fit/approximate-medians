@@ -1,4 +1,4 @@
-# AxMED
+# Approximate median filters - AxMED
 Approximate medians and their formal verifications
 
 This repository shows implementations of approximate medians described in paper submitted to ISCAS conference. The implementations and their parameters can be found in directories
@@ -6,6 +6,21 @@ This repository shows implementations of approximate medians described in paper 
 *  [vhdl](VHDL) exports of all proposed 
 
 The complete parameters of the proposed medians can be found at the end of this document.
+
+## Reference
+
+MRAZEK Vojtech and VASICEK Zdeněk. AxMED: Formal Analysis and Automated Design of Approximate Median Filters using BDDs. In: 2025 IEEE International Symposium on Circuits and Systems (ISCAS). London, 2025, p. 5.
+
+```bibtex
+@INPROCEEDINGS{mrazek:axmed:iscas25,
+   author = "Vojtech Mrazek and Zdenek Vasicek",
+   title = "AxMED: Formal Analysis and Automated Design of Approximate Median Filters using BDDs",
+   pages = 5,
+   booktitle = "2025 IEEE International Symposium on Circuits and Systems (ISCAS)",
+   year = 2025,
+   location = "London, GB"
+}
+```
 
 ## Median of Medians
 The netlists can also be combined together using _median of medians_ approach using [mom.py](mom.py) script.
